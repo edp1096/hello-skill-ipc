@@ -1,0 +1,10 @@
+procedure( loadSkillFiles()
+let((dir)
+	dir = getWorkingDir()
+	foreach(file rexMatchList("\\.il$" getDirFiles(dir))
+		load(file)
+	)
+))
+
+loadSkillFiles()
+axlCmdRegister("11" `loadSkillFiles)
