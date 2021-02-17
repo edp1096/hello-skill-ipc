@@ -10,7 +10,7 @@ import (
 var count = 0
 
 func procData(data string) {
-	fmt.Println("Received-", data)
+	fmt.Println("Received-" + data)
 }
 
 func main() {
