@@ -13,4 +13,7 @@ let((proc csid result isKilled)
     ; ipcKillProcess(csid) ; I don't want to see nil printing until proxsyServer response
 ))
 
-cid = ipcBeginProcess("proxyServer" "" "proxyListener")
+if((symeval('cid) == 'unbound)
+then
+    cid = ipcBeginProcess("proxyServer" "" "proxyListener")
+)
