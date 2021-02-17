@@ -1,4 +1,4 @@
-procedure( loadSkillFiles()
+procedure(loadSkillFiles()
 let((dir)
 	dir = getWorkingDir()
 	foreach(file rexMatchList("\\.il$" getDirFiles(dir))
@@ -6,5 +6,10 @@ let((dir)
 	)
 ))
 
-loadSkillFiles()
-axlCmdRegister("11" `loadSkillFiles)
+; Prevent run twice
+if((symeval('isSkillFilesLoaded) == 'unbound)
+then
+	loadSkillFiles()
+	axlCmdRegister("11" `loadSkillFiles)
+    isSkillFilesLoaded = t
+)

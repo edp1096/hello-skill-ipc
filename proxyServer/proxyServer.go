@@ -9,12 +9,16 @@ import (
 
 var count = 0
 
+func procData(data string) {
+	fmt.Println("Received-", data)
+}
+
 func main() {
 	go func() {
 		var data string
 		for {
 			fmt.Scan(&data)
-			fmt.Println("Received", data)
+			procData("chan-ipc-" + data)
 		}
 	}()
 
@@ -23,7 +27,8 @@ func main() {
 	e.HideBanner = true
 
 	e.GET("/", func(c echo.Context) error {
-		fmt.Println("hello^_^-", count)
+		data := "chan-rest-" + fmt.Sprint(count)
+		procData(data)
 		count++
 		return c.String(http.StatusOK, "Hello, World!")
 	})
