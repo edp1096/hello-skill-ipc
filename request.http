@@ -1,1 +1,16 @@
-GET http://localhost:1323 HTTP/1.1
+@uri=http://localhost:1323
+@uriAllegro=http://localhost:1323/api/allegro
+
+
+### Health
+GET {{uri}} HTTP/1.1
+
+
+### Command
+POST {{uriAllegro}} HTTP/1.1
+content-type: application/json
+
+{
+    "cmd": "my_print",
+    "arg": "hello world"
+}
